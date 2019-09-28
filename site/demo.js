@@ -9,6 +9,18 @@
 //import {addDomMarker} from './marker.js';
 
 
+function drawMarkersJSON(map, data) {
+  for(let i = 0; i < data.features.length; i++){
+    let lat = data.features[i].geometry.coordinates[0];
+    let lng = data.features[i].geometry.coordinates[1];
+    var imageMarker = new H.map.Marker(new H.geo.Point(lat,lng),
+    {
+      //icon: new H.map.Icon('map-marker.png')
+    });
+    map.addObject(imageMarker);
+  }
+}
+
 function capture(resultContainer, map, ui) {
   // Capturing area of the map is asynchronous, callback function receives HTML5 canvas
   // element with desired map area rendered on it.
@@ -68,12 +80,13 @@ var reqLoc = fetch("https://freegeoip.app/json/").then(res => {
     map.setCenter(geoPoint);
   })
 })
-
-var req = fetch("https://freegeoip.app/json/").then(res => {
+// построение 
+var reqLoc = fetch("https://api.myjson.com/bins/c267l").then(res => {
   res.json().then(data=>{
-    var geoPoint = new H.geo.Point(data.latitude, data.longitude);
-    map.setCenter(geoPoint);
+    console.log(data.features[0]);
+    drawMarkersJSON(map, data);
   })
 })
+
 
 
