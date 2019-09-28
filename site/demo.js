@@ -5,12 +5,9 @@
  * @param {H.Map} map Reference to initialized map object
  * @param {H.ui.UI} ui Reference to UI component
  */
-function test(jsonObj) {
-  var myH1 = document.createElement('h1');
-  myH1.textContent = jsonObj['ip'];
 
-  header.appendChild(myH1);
-}
+//import {addDomMarker} from './marker.js';
+
 
 function capture(resultContainer, map, ui) {
   // Capturing area of the map is asynchronous, callback function receives HTML5 canvas
@@ -43,7 +40,7 @@ var mapContainer = document.getElementById('map');
 // Step 2: initialize a map
 var map = new H.Map(mapContainer, defaultLayers.vector.normal.map, {
   // initial center and zoom level of the map
-  zoom: 30,
+  zoom: 16,
   // Champs-Elysees
   center: {lat: 48, lng: 2},
   pixelRatio: window.devicePixelRatio || 1
@@ -63,32 +60,20 @@ var ui = H.ui.UI.createDefault(map, defaultLayers, 'en-US');
 // Step 6: Create "Capture" button and place for showing the captured area
 var resultContainer = document.getElementById('panel');
 
-// Create container for the "Capture" button
-// var containerNode = document.createElement('div');
-// containerNode.className = 'btn-group';
-
-// Create the "Capture" button
-// var captureBtn = document.createElement('input');
-// captureBtn.value = 'Capture';
-// captureBtn.type = 'button';
-// captureBtn.className = 'btn btn-sm btn-default';
-
-// Add both button and container to the DOM
-// containerNode.appendChild(captureBtn);
-// mapContainer.appendChild(containerNode);
-
-// Step 7: Handle capture button click event
-// captureBtn.onclick = function() {
-//   capture(resultContainer, map, ui);
-// };
 
 // устанавливаем центр карты на текущее положение пользователя
-var s = fetch("https://freegeoip.app/json/").then(res => {
+var reqLoc = fetch("https://freegeoip.app/json/").then(res => {
   res.json().then(data=>{
     var geoPoint = new H.geo.Point(data.latitude, data.longitude);
     map.setCenter(geoPoint);
-    //костыль, вопрос к here
-    map.setZoom(14);
   })
 })
+
+var req = fetch("https://freegeoip.app/json/").then(res => {
+  res.json().then(data=>{
+    var geoPoint = new H.geo.Point(data.latitude, data.longitude);
+    map.setCenter(geoPoint);
+  })
+})
+
 
