@@ -16,10 +16,22 @@
     <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
     <script src="jquery-3.4.1.min.js"></script>
   </head>
-  <body id="capture-map-area">
-    <div id="map"></div>
+  <body id="capture-map-area">      
+   <form> 
+        <p><input type = "text" , name="Point1" placeholder= "Точка отправления" size ="18"/></p>
+        <p><input type="text" name="Point2" placeholder="Конечная точка" size="18" />
+
+        </p>
+        <p><button style="width:120x;height:30px"  type="submit">Построить маршрут</button size="18"> </p>
+
+        </form>  
+       <div id="map">
+
+   
+    </div>
     <script type="text/javascript" src='demo.js'>
       var header = document.querySelector('header');
+
     </script>
   </body>
 </html>

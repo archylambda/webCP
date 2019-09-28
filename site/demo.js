@@ -9,16 +9,21 @@
 //import {addDomMarker} from './marker.js';
 
 
-function drawMarkersJSON(map, data) {
+function drawMarkers(map, data) {
   for(let i = 0; i < data.features.length; i++){
-    let lat = data.features[i].geometry.coordinates[0];
-    let lng = data.features[i].geometry.coordinates[1];
+    let lat = data.features[i].geometry.coordinates[1];
+    let lng = data.features[i].geometry.coordinates[0];
+    
     var imageMarker = new H.map.Marker(new H.geo.Point(lat,lng),
     {
       //icon: new H.map.Icon('map-marker.png')
     });
     map.addObject(imageMarker);
   }
+}
+
+function drawPoly(map, data) {
+
 }
 
 function capture(resultContainer, map, ui) {
@@ -81,12 +86,16 @@ var reqLoc = fetch("https://freegeoip.app/json/").then(res => {
   })
 })
 // построение 
-var reqLoc = fetch("https://api.myjson.com/bins/c267l").then(res => {
+var reqLoc = fetch("https://api.myjson.com/bins/c3ha1").then(res => {
   res.json().then(data=>{
-    console.log(data.features[0]);
-    drawMarkersJSON(map, data);
+    drawMarkers(map, data);
   })
 })
 
-
+var reqPoly = fetch("https://api.myjson.com/bins/1fa0ll").then(res => {
+  res.json().then(data=>{
+    console.log(data);
+    drawPoly(map, data);
+  })
+}) 
 
