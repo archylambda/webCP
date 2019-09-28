@@ -17,6 +17,12 @@
     padding: 10px;
 }
 
+header p {
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: center;
+  }
+
 @media (max-width: 1024px ) {
     .btn-group {
         top: 15rem;

@@ -5,6 +5,13 @@
  * @param {H.Map} map Reference to initialized map object
  * @param {H.ui.UI} ui Reference to UI component
  */
+function test(jsonObj) {
+  var myH1 = document.createElement('h1');
+  myH1.textContent = jsonObj['ip'];
+
+  header.appendChild(myH1);
+}
+
 function capture(resultContainer, map, ui) {
   // Capturing area of the map is asynchronous, callback function receives HTML5 canvas
   // element with desired map area rendered on it.
@@ -36,9 +43,9 @@ var mapContainer = document.getElementById('map');
 // Step 2: initialize a map
 var map = new H.Map(mapContainer, defaultLayers.vector.normal.map, {
   // initial center and zoom level of the map
-  zoom: 16,
+  zoom: 30,
   // Champs-Elysees
-  center: {lat: 48.869145, lng: 2.314298},
+  center: {lat: 48, lng: 2},
   pixelRatio: window.devicePixelRatio || 1
 });
 // add a resize listener to make sure that the map occupies the whole container
@@ -74,3 +81,14 @@ var resultContainer = document.getElementById('panel');
 // captureBtn.onclick = function() {
 //   capture(resultContainer, map, ui);
 // };
+
+// устанавливаем центр карты на текущее положение пользователя
+var s = fetch("https://freegeoip.app/json/").then(res => {
+  res.json().then(data=>{
+    var geoPoint = new H.geo.Point(data.latitude, data.longitude);
+    map.setCenter(geoPoint);
+    //костыль, вопрос к here
+    map.setZoom(14);
+  })
+})
+
