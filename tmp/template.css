@@ -356,7 +356,7 @@ strong{
     -webkit-box-shadow:0 0 0 white;
     -moz-box-shadow:0 0 0 white;
     box-shadow:0 0 0 white;
-    border-color:#3d73d0;
+    border-color: #e21a1a;/*#3d73d0;*/
     outline:0;
     outline:none;
 }

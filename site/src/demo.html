@@ -17,13 +17,17 @@
     <script src="jquery-3.4.1.min.js"></script>
   </head>
   <body id="capture-map-area">
-    <div style = "position:fixed;z-index: 1000;left: 20px;"> 
-   <form style=""> 
-        <p><input type = "text" , name="Point1" placeholder= "Точка отправления" size ="18"/></p>
-        <p><input type="text" name="Point2" placeholder="Конечная точка" size="18" />
+    <div style = "position:fixed;z-index: 1000;left: 40px; top: 40px"> 
+   <form onsubmit="buildRoute();" class="form_class"> 
+        <p><input id="from" type = "text"  class="input_class" name="Point1" placeholder= "Откуда" size ="18"/></p>
+        <p><input id="to" type="text" class="input_class" name="Point2" placeholder="Куда" size="18" />
 
         </p>
-        <p><button style="position: fixed;;z-index: 1000;left: 20px"  type="submit">Построить маршрут</button size="18"> </p>
+        <p style="display: flex; justify-content: center  ">
+          <button class="btn_class" style="position: relative; z-index: 1000;"  type="submit">
+            Построить маршрут
+          </button size="18"> 
+        </p>
 
    </form>  
    </div>
@@ -32,7 +36,6 @@
    
     
     <script type="text/javascript" src='demo.js'>
-      var header = document.querySelector('header');
 
     </script>
   </body>

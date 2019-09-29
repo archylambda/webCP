@@ -23,9 +23,41 @@ function drawMarkers(map, data) {
 }
 
 function drawPoly(map, data) {
+  var lineString = new H.geo.LineString();
+  var pointArr = data.features[0].geometry.coordinates;
 
+  for(let i = 0; i < pointArr.length; i++){
+
+    lineString.pushPoint({lat:pointArr[i][1], lng: pointArr[i][0]});
+  }
+
+  map.addObject(new H.map.Polyline(
+    lineString, {style: { lineWidth: 4}}
+  ));
 }
 
+function buildRoute(){
+  let src = document.getElementById("from").value;
+  let dest = document.getElementById("to").value;
+
+  // // 1. Создаём новый объект XMLHttpRequest
+  // var xhr = new XMLHttpRequest();
+
+  // // 2. Конфигурируем его: GET-запрос на URL 'phones.json'
+  // xhr.open('GET', `192.168.43.42:8080/buildRoute?src=${src}&dest=${dest}`, false);
+
+  // // 3. Отсылаем запрос
+  // xhr.send();
+
+  // // 4. Если код ответа сервера не 200, то это ошибка
+  // if (xhr.status != 200) {
+  //   // обработать ошибку
+  //   alert( xhr.status + ': ' + xhr.statusText ); // пример вывода: 404: Not Found
+  // } else {
+  //   // вывести результат
+  //   alert(xhr.responseText);
+  // }
+}
 function capture(resultContainer, map, ui) {
   // Capturing area of the map is asynchronous, callback function receives HTML5 canvas
   // element with desired map area rendered on it.
@@ -94,7 +126,6 @@ var reqLoc = fetch("https://api.myjson.com/bins/c3ha1").then(res => {
 
 var reqPoly = fetch("https://api.myjson.com/bins/1fa0ll").then(res => {
   res.json().then(data=>{
-    console.log(data);
     drawPoly(map, data);
   })
 }) 

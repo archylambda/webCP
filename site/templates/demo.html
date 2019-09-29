@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <meta name="description" content="Capture an area on the map">
+    <title>Take a Snapshot of the Map</title>
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <link rel="stylesheet" type="text/css" href="../static/template.css" />
+    <link rel="stylesheet" type="text/css" href="../static/demo.css" />
+    <link rel="stylesheet" type="text/css" href="../static/styles.css" />
+    <script type="text/javascript" src='../static/test-credentials.js'></script>  
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+    <script src="../static/jquery-3.4.1.min.js"></script>
+  </head>
+  <body id="capture-map-area">
+    <div style = "position:fixed;z-index: 1000;left: 40px; top: 40px"> 
+   <form class="form_class"> 
+        <p><input id="from" type = "text"  class="input_class" name="Point1" placeholder= "Откуда" size ="18"/></p>
+        <p><input id="to" type="text" class="input_class" name="Point2" placeholder="Куда" size="18" />
+
+        </p>
+        <p style="display: flex; justify-content: center  ">
+          <button onclick="buildRoute();" class="btn_class" style="position: relative; z-index: 1000;"  type="button">
+            Построить маршрут
+          </button size="18"> 
+        </p>
+
+   </form>  
+   </div>
+       <div id="map">
+
+    <script type="text/javascript" src='../static/demo.js'>
+
+    </script>
+  </body>
+</html>
