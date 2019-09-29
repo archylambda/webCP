@@ -39,24 +39,17 @@ function drawPoly(map, data) {
 function buildRoute(){
   let src = document.getElementById("from").value;
   let dest = document.getElementById("to").value;
+  console.log(src);
+  console.log(dest);
 
-  // // 1. Создаём новый объект XMLHttpRequest
-  // var xhr = new XMLHttpRequest();
-
-  // // 2. Конфигурируем его: GET-запрос на URL 'phones.json'
-  // xhr.open('GET', `192.168.43.42:8080/buildRoute?src=${src}&dest=${dest}`, false);
-
-  // // 3. Отсылаем запрос
-  // xhr.send();
-
-  // // 4. Если код ответа сервера не 200, то это ошибка
-  // if (xhr.status != 200) {
-  //   // обработать ошибку
-  //   alert( xhr.status + ': ' + xhr.statusText ); // пример вывода: 404: Not Found
-  // } else {
-  //   // вывести результат
-  //   alert(xhr.responseText);
-  // }
+  let url = `192.168.43.42:8080/buildroute?src=${src}&dest=${dest}`;
+  //let url = "192.168.43.42:8080/show";
+  console.log(url);
+  var reqPoly = fetch(url).then(res => {
+  res.json().then(data=>{
+    console.log(data);
+  })
+}) 
 }
 function capture(resultContainer, map, ui) {
   // Capturing area of the map is asynchronous, callback function receives HTML5 canvas
